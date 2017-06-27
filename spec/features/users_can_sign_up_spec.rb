@@ -13,6 +13,7 @@ RSpec.feature "Sign up", type: :feature do
 
   scenario "Person cannot sign up with an empty field" do
     visit "/users/new"
+    fill_in "Email", with: "random@email.com"
     click_button "Sign up"
     expect(page).to have_current_path("/users/new")
   end

@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     session[:current_user_id] = @user.id
-    redirect_to users_url if @user.id
+    @user.id ? redirect_to(users_url)  : redirect_to("/users/new")
   end
 
   def index
